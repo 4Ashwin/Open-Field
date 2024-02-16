@@ -5,7 +5,8 @@ function distributor_login(props) {
     return (
         <div>
             <Navbar />
-            Distributor
+            <div>
+            </div>
         </div>
     );
 }

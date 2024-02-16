@@ -5,7 +5,8 @@ function farmer_login(props) {
     return (
         <div>
             <Navbar />
-            farmer
+            <div>
+            </div>
         </div>
     );
 }

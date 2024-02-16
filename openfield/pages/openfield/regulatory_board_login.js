@@ -5,7 +5,8 @@ function regulatory_board_login(props) {
     return (
         <div>
             <Navbar />
-            regulatory
+            <div>
+            </div>
         </div>
     );
 }

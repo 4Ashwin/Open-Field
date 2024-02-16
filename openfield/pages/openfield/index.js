@@ -5,7 +5,9 @@ function openfield(props) {
     return (
         <div>
             <Navbar />
-            our home page
+            <div>
+
+            </div>
         </div>
     );
 }
