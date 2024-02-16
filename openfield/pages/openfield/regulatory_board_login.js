@@ -1,13 +1,13 @@
 import Navbar from '@/components/navbar';
 import React from 'react';
 
-function intermediatory_login(props) {
+function regulatory_board_login(props) {
     return (
         <div>
             <Navbar />
-            Intermediatory
+            regulatory
         </div>
     );
 }
 
-export default intermediatory_login;
+export default regulatory_board_login;
