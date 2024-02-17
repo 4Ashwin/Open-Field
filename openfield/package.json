@@ -12,12 +12,9 @@
     "axios": "^1.6.7",
     "chart.js": "^4.4.1",
     "daisyui": "^4.7.2",
-<<<<<<< HEAD
     "ethers": "5.0.0",
-=======
     "fs": "^0.0.1-security",
     "net": "^1.0.2",
->>>>>>> c3346868c1e917a0dd4c44c70e122d13414e0a0c
     "next": "14.1.0",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",

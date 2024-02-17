@@ -8,7 +8,6 @@ function distributor_profile(props) {
   let [modalVisible, setModalVisible] = useState(false);
   let [currentPesticide, setCurrentPesticide] = useState(null);
   const handleSellButtonClick = (pesticide) => {
-    // You can add logic here to handle the selling process and show a notification.
     setCurrentPesticide(pesticide);
     setModalVisible(true);
   };
