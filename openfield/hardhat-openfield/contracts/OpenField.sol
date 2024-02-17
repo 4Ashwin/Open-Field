@@ -65,6 +65,22 @@ contract OpenField {
 
     constructor() {
         name = "OpenField";
+
+        producerCount += 1;
+        Producer storage producer = producers[producerCount];
+        producer.id = 1;
+        producer.name = "SOme PLT";
+        producer.dealer_name = "Dealer nameeee";
+
+        producerCount += 1;
+        Producer storage producer1 = producers[producerCount];
+        producer1.id = 2;
+        producer1.name = "PLT";
+        producer1.dealer_name = " nameeee";
+
+        addPesticide(1, 100, "ABCD", "B001", "16/12/2002", "7/03/2003");
+        addPesticide(1, 100, "cd", "B001", "16/12/2002", "7/03/2003");
+        addPesticide(5, 100, "ABCD", "B001", "16/12/2002", "7/03/2003");
     }
 
     event NewFarmer(Farmer);
