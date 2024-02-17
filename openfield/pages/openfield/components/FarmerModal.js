@@ -18,6 +18,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
   const [otp, setOtp] = useState("");
   console.log(farmers);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
 
   if (!isOpen) return null;
@@ -35,7 +36,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
 
   const handleSubmit = async () => {
     if (currentAccount) {
-
+      setLoading(true);
       const web3Modal = new Web3Modal()
       const connection = await web3Modal.connect()
       const provider = new ethers.providers.Web3Provider(connection)
@@ -46,9 +47,16 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
       let transaction = await contract.addPesticideFarmer(selected[0], selected[1], 10)
       await transaction.wait();
       console.log("succ")
+      setLoading(false);
+      setShow(false);
+      setOtp("")
+      // onClose()
+      my_modal_2.showModal()
+      // window.alert("Transaction successfull")
       // print()
     }
   }
+
   return (
     <div
       style={{
@@ -117,6 +125,22 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
           CLOSE
         </button>
       </div>
+      {loading &&
+
+        <div className="absolute top-0 w-screen h-screen bg-white flex items-center justify-center z-[10]">
+
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      }
+      <dialog id="my_modal_2" class="modal">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">Successfull!</h3>
+          <p class="py-4">Transaction successfull.</p>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };
