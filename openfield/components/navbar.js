@@ -1,7 +1,15 @@
+import { Context } from '@/context/Context';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useContext } from 'react';
 
 function Navbar(props) {
+    const { connectWallet, currentAccount } = useContext(Context);
+    const router = useRouter()
+    const handleLogin = async (item) => {
+        await connectWallet();
+        router.push(item[1])
+    }
     return (
 
 
@@ -20,15 +28,15 @@ function Navbar(props) {
                             <ul className="p-2 bg-base-100 rounded-t-none">
                                 {
                                     [
-                                        ["Farmer", "/openfield/farmer_login"],
-                                        ["Distributor", "/openfield/distributor_login"],
-                                        ["Regulatory board", "/openfield/regulatory_board_login"],
-                                        ["Producer", "/openfield/producer_login"]
+                                        ["Farmer", "/openfield/farmer_profile"],
+                                        ["Distributor", "/openfield/distributor_profile"],
+                                        ["Regulatory board", "/openfield/regulatory_board_profile"],
+                                        ["Producer", "/openfield/producer_profile"]
                                     ].map((item, ind) => {
                                         return (
                                             <li>
 
-                                                <Link key={ind} href={item[1]}>{item[0]}</Link>
+                                                <button key={ind} onClick={() => handleLogin(item)}>{item[0]}</button>
                                             </li>
                                         )
                                     })
