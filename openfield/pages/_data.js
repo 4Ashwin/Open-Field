@@ -77,7 +77,7 @@ export const farmers = [
 ];
 
 export const DistributorInfo = {
-  DistributorName: "New Distributor 1",
-  Outlet_loc: "Farmville, USA",
+  DistributorName: "WareHouse Distributors",
+  Outlet_loc: "Hyderabad, India",
   Instock: "34",
 };
