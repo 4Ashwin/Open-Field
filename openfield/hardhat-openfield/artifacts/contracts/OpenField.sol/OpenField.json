@@ -195,29 +195,6 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_pest_id",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_farmer_id",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_qtd",
-          "type": "uint256"
-        }
-      ],
-      "name": "addPesticideFarmer",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [],
       "name": "cropCount",
       "outputs": [
@@ -393,72 +370,6 @@
             }
           ],
           "internalType": "struct OpenField.Farmer[]",
-          "name": "",
-          "type": "tuple[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "getFarmersPesticidesById",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint256",
-              "name": "id",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "producer_id",
-              "type": "uint256"
-            },
-            {
-              "internalType": "string",
-              "name": "producer_name",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "internalType": "uint256",
-              "name": "quantity",
-              "type": "uint256"
-            },
-            {
-              "internalType": "string",
-              "name": "ingredient",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "batchno",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "manufacture_date",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "expiry_date",
-              "type": "string"
-            }
-          ],
-          "internalType": "struct OpenField.Pesticide[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -782,11 +693,6 @@
         {
           "internalType": "uint256",
           "name": "farmer_id",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "qtd",
           "type": "uint256"
         },
         {
