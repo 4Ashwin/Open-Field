@@ -1,16 +1,57 @@
 import Navbar from "@/components/navbar";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DetailsCard from "./components/DetailsCard";
 import SoilTestResultsCard from "./components/SoilTestResultsCard";
 import { pesticidesData, farmers, DistributorInfo } from "../_data.js";
 import FarmerModal from "./components/FarmerModal";
+import { ContractAddress } from "../../config";
+import OpenField from "../../hardhat-openfield/artifacts/contracts/OpenField.sol/OpenField.json"
+import { useRouter } from "next/navigation";
+import { ethers } from "ethers";
+import { Context } from "@/context/Context";
+
+
+
 function distributor_profile(props) {
   let [modalVisible, setModalVisible] = useState(false);
   let [currentPesticide, setCurrentPesticide] = useState(null);
+  const [farmers, setFarmers] = useState([]);
+
   const handleSellButtonClick = (pesticide) => {
     setCurrentPesticide(pesticide);
     setModalVisible(true);
   };
+
+  const [pesticidesData, setPesticidesData] = useState([])
+  const { connectWallet, currentAccount } = useContext(Context);
+  console.log(currentAccount)
+  const router = useRouter()
+
+
+
+  useEffect(() => {
+    (async () => {
+      if (currentAccount) {
+
+        const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
+        // const provider = new ethers.providers.JsonRpcProvider()
+        const Contract = new ethers.Contract(ContractAddress, OpenField.abi, provider)
+
+        const data_pest = await Contract.getPesticides();
+        const farmers = await Contract.getAllFarmers();
+        const data_prod = await Contract.getProducers();
+        setPesticidesData(data_pest)
+        setFarmers(farmers);
+
+
+        // setLogs(data);
+        // setLoading(false)
+        console.log(data_pest, "datas", data_prod)
+      } else {
+        router.push("/");
+      }
+    })()
+  }, [currentAccount]);
 
   return (
     <div>
@@ -43,17 +84,17 @@ function distributor_profile(props) {
               <th className="p-3 text-left">Batch No</th>
               <th className="p-3 text-left">Pesticide Name</th>
               <th className="p-3 text-left">Company Produced</th>
-              <th className="p-3 text-left">Targetted Pests</th>
+              {/* <th className="p-3 text-left">Targetted Pests</th> */}
             </tr>
           </thead>
           <tbody>
             {pesticidesData.map((fertilizer, index) => (
               <tr key={index}>
-                <td className="p-3">{fertilizer.pesticideId}</td>
-                <td className="p-3">{fertilizer.batchNo}</td>
-                <td className="p-3">{fertilizer.pesticideName}</td>
-                <td className="p-3">{fertilizer.companyProduced}</td>
-                <td className="p-3">{fertilizer.targetedPests}</td>
+                <td className="p-3">{fertilizer.id.toNumber()}</td>
+                <td className="p-3">{fertilizer.batchno}</td>
+                <td className="p-3">{fertilizer.name}</td>
+                <td className="p-3">{fertilizer.producer_name}</td>
+                {/* <td className="p-3">{fertilizer.targetedPests}</td> */}
                 <td className="py-2 px-4 border-b">
                   <button
                     onClick={() => handleSellButtonClick(fertilizer)}
@@ -70,6 +111,7 @@ function distributor_profile(props) {
       <FarmerModal
         isOpen={modalVisible}
         pesticide={currentPesticide}
+        farmers={farmers}
         onClose={() => {
           setModalVisible(false);
         }}

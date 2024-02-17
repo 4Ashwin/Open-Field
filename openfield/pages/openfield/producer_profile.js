@@ -151,7 +151,7 @@ function producer_profile(props) {
           <tbody>
             {pesticidesData.map((pesticide, ind) => (
               <tr key={ind}>
-                <td className="py-2 px-4 border-b">{ethers.utils.formatEther(pesticide.id)}</td>
+                <td className="py-2 px-4 border-b">{pesticide.id.toNumber()}</td>
                 <td className="py-2 px-4 border-b">{pesticide.batchno}</td>
                 <td className="py-2 px-4 border-b">{pesticide.ingredient}</td>
                 <td className="py-2 px-4 border-b">{pesticide.manufacture_date}</td>

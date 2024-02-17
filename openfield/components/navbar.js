@@ -25,7 +25,7 @@ function Navbar(props) {
                             <summary>
                                 Login as
                             </summary>
-                            <ul className="p-2 bg-base-100 rounded-t-none">
+                            <ul className="p-2 bg-base-100 rounded-t-none text-black">
                                 {
                                     [
                                         ["Farmer", "/openfield/farmer_profile"],

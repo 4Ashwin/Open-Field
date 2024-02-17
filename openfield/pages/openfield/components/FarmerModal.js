@@ -1,14 +1,33 @@
-import React from "react";
-import { farmers } from "../../_data";
+import React, { useContext, useEffect, useState } from "react";
+// import { farmers } from "../../_data";
 import { handleSell } from "../utils";
-const FarmerModal = ({ isOpen, onClose, pesticide, children }) => {
+import { Search } from "@mui/icons-material";
+import { Context } from "@/context/Context";
+import { useRouter } from "next/navigation";
+import { ethers } from "ethers";
+
+
+const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
+  const [search, setSearch] = useState("")
+  const { connectWallet, currentAccount } = useContext(Context);
+  console.log(farmers);
+  const router = useRouter();
+
+
   if (!isOpen) return null;
+
+
+
+
+  const filtering = farmers.filter(item => {
+    return search !== "" ? item.name.toLowerCase().includes(search.toLowerCase()) : item;
+  })
 
   return (
     <div
       style={{
         position: "fixed",
-        top: 0,
+        top: 25,
         left: 0,
         width: "100%",
         height: "100%",
@@ -32,18 +51,23 @@ const FarmerModal = ({ isOpen, onClose, pesticide, children }) => {
         }}
       >
         <div>
-          {farmers.map((farmer, index) => {
-            return (
-              <div
-                className="rounded-lg shadow flex flex-col justify-center items-center mb-5"
-                onClick={() => {
-                  handleSell(farmer, pesticide);
-                }}
-              >
-                <h3>{farmer.name}</h3>
-              </div>
-            );
-          })}
+
+          <p className="font bold">Select farmer</p>
+          <input className="border w-full mb-5" placeholder="Search here" value={search} onChange={(e) => setSearch(e.target.value)} />
+          <div className="z-[10] w-full h-64 overflow-scroll overflow-x-hidden">
+            {filtering.map((farmer, index) => {
+              return (
+                <div
+                  className="rounded-lg shadow flex flex-col justify-center items-center mb-5"
+                  onClick={() => {
+                    handleSell(farmer, pesticide);
+                  }}
+                >
+                  <h3>{farmer.name} : {farmer.id.toNumber()}</h3>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <button
