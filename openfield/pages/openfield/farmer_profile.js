@@ -34,6 +34,7 @@ function farmer_profile(props) {
                 <div className="flex">
                     <div className="w-1/2 mr-4">
                         <DetailsCard
+                        userType={'Farmer'}
                         farmerName={farmerInfo.farmerName}
                         farmLocation={farmerInfo.farmLocation}
                         cropInfo={farmerInfo.cropInformation}
@@ -43,7 +44,7 @@ function farmer_profile(props) {
                         <SoilTestResultsCard soilTestResults />
                     </div>
                     <div className="w-1/2">
-                        <div className="bg-white p-4 rounded shadow  dark:bg-neutral-700">
+                        <div className="bg-white p-4 rounded shadow">
                             <h2 className="text-lg font-semibold mb-2">Organic Certification</h2>
                             <p className="text-red-700">Status: Not approved</p>
                         </div>
