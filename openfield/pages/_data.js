@@ -72,8 +72,8 @@ export const pesticidesData = [
 ];
 
 export const farmers = [
-  { name: "Ramu", farming_level: 1, rating: "2.3" },
-  { name: "Damu", farming_level: 1, rating: "2.3" },
+  { name: "Ramu", farming_level: 1, rating: "2.3", phoneNumber: "9961220370" },
+  { name: "Damu", farming_level: 1, rating: "2.3", phoneNumber: "9961220370" },
 ];
 
 export const DistributorInfo = {
