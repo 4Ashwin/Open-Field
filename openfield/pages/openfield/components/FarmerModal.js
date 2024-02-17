@@ -5,49 +5,24 @@ import { Search } from "@mui/icons-material";
 import { Context } from "@/context/Context";
 import { useRouter } from "next/navigation";
 import { ethers } from "ethers";
-import { ContractAddress } from "@/config";
-import OpenField from "../../../hardhat-openfield/artifacts/contracts/OpenField.sol/OpenField.json"
-import Web3Modal from "web3modal";
 
 
 const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
   const [search, setSearch] = useState("")
   const { connectWallet, currentAccount } = useContext(Context);
-  const [show, setShow] = useState(false);
-  const [selected, setSelected] = useState([])
-  const [otp, setOtp] = useState("");
   console.log(farmers);
   const router = useRouter();
 
 
   if (!isOpen) return null;
 
+
+
+
   const filtering = farmers.filter(item => {
     return search !== "" ? item.name.toLowerCase().includes(search.toLowerCase()) : item;
   })
 
-  const handleSelect = (farmer, pesticide) => {
-    // send OTP
-    setShow(true);
-    setSelected([pesticide.id, farmer.id])
-
-  }
-
-  const handleSubmit = async () => {
-    if (currentAccount) {
-
-      const web3Modal = new Web3Modal()
-      const connection = await web3Modal.connect()
-      const provider = new ethers.providers.Web3Provider(connection)
-      const signer = provider.getSigner()
-
-
-      let contract = new ethers.Contract(ContractAddress, OpenField.abi, signer)
-      let transaction = await contract.addPesticideFarmer(selected[0], selected[1], 10)
-      await transaction.wait();
-      console("success")
-    }
-  }
   return (
     <div
       style={{
@@ -63,7 +38,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
       }}
     >
       <div
-        className="flex flex-col justify-between z-10"
+        className="flex flex-col justify-between"
         style={{
           background: "white",
           height: 600,
@@ -85,7 +60,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
                 <div
                   className="rounded-lg shadow flex flex-col justify-center items-center mb-5"
                   onClick={() => {
-                    handleSelect(farmer, pesticide);
+                    handleSell(farmer, pesticide);
                   }}
                 >
                   <h3>{farmer.name} : {farmer.id.toNumber()}</h3>
@@ -94,14 +69,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
             })}
           </div>
         </div>
-        {
-          show &&
-          <input placeholder="Enter OTP" value={otp} onChange={e => setOtp(e.target.value)} />
-        }
-        {
-          show &&
-          <button onClick={() => handleSubmit()}>Confim</button>
-        }
+
         <button
           className="with-fit rouned-lg bg-red-100 px-2"
           onClick={onClose}
@@ -112,6 +80,5 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
     </div>
   );
 };
-
 
 export default FarmerModal;
