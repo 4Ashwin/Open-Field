@@ -57,7 +57,7 @@ function distributor_profile(props) {
     <div>
       <Navbar />
       <div className="text-black mt-28">
-        <h1>Distributor Profile</h1>
+      <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi </h1>
         <div className="flex">
           <div className="w-1/2 mr-4">
             <DetailsCard
@@ -68,7 +68,7 @@ function distributor_profile(props) {
             />
           </div>
           <div className="w-1/2">
-            <div className="bg-white p-4 rounded shadow">
+            <div className="bg-white p-4 rounded shadow m-7">
               <h2 className="text-lg font-semibold mb-2">
                 No of farmers as customers
               </h2>
