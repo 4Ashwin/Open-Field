@@ -16,6 +16,7 @@ function distributor_profile(props) {
   let [modalVisible, setModalVisible] = useState(false);
   let [currentPesticide, setCurrentPesticide] = useState(null);
   const [farmers, setFarmers] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   const handleSellButtonClick = (pesticide) => {
     setCurrentPesticide(pesticide);
@@ -46,6 +47,7 @@ function distributor_profile(props) {
 
         // setLogs(data);
         // setLoading(false)
+        setLoading(false);
         console.log(data_pest, "datas", data_prod)
       } else {
         router.push("/");
@@ -118,6 +120,13 @@ function distributor_profile(props) {
           setModalVisible(false);
         }}
       />
+      {loading &&
+
+        <div className="absolute top-0 w-screen h-screen bg-white flex items-center justify-center z-[10]">
+
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      }
     </div>
   );
 }

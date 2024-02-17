@@ -16,6 +16,7 @@ function producer_profile(props) {
     console.log(query.id_);
     const [pesticidesData, setPesticidesData] = useState([]);
     const [producer, setProducer] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     const producerInfo = {
         producerName: 'Producer ABC',
@@ -35,6 +36,7 @@ function producer_profile(props) {
             const data = await Contract.getProcudersPesticides(query.id);
             setProducer(data_producer)
             setPesticidesData(data)
+            setLoading(false);
 
             // setLogs(data);
             // setLoading(false)
@@ -96,6 +98,13 @@ function producer_profile(props) {
                     </tbody>
                 </table>
             </div>
+            {loading &&
+
+                <div className="absolute top-0 w-screen h-screen bg-white flex items-center justify-center z-[10]">
+
+                    <span className="loading loading-ring loading-lg"></span>
+                </div>
+            }
         </div>
     );
 }

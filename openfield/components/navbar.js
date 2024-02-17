@@ -13,7 +13,7 @@ function Navbar(props) {
     return (
 
 
-        <div className="navbar bg-green-600 text-black max-w-screen text-white font-bold  fixed top-0 left-0 w-full z-10">
+        <div className="navbar bg-green-600 text-black max-w-screen text-white font-bold  fixed top-0 left-0 w-full z-[30]">
             <div className="flex-1">
                 <Link href={"/openfield"} className="btn btn-ghost text-xl">OpenField</Link>
             </div>

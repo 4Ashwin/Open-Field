@@ -56,6 +56,8 @@ function openfield(props) {
   const [farmers, setFarmers] = useState([])
   const [producers, setproducers] = useState([])
   const [markers, setMarkers] = useState([])
+
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
 
@@ -82,6 +84,8 @@ function openfield(props) {
           }
         })
       })
+
+      setLoading(false);
 
 
 
@@ -190,6 +194,14 @@ function openfield(props) {
           </div>
         </div> */}
       </div>
+      {loading &&
+
+        <div className="absolute top-0 w-screen h-screen bg-white flex items-center justify-center z-[10]">
+
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      }
+
     </div >
   );
 }

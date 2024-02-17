@@ -17,6 +17,7 @@ function farmer_profile(props) {
 
     const [pesticidesData, setPesticidesData] = useState([]);
     const [farmer, setFarmer] = useState(null);
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         (async () => {
             // if (currentAccount) {
@@ -31,6 +32,7 @@ function farmer_profile(props) {
 
             setPesticidesData(data_pest)
             setFarmer(data_farmer)
+            setLoading(false);
 
 
             // setLogs(data);
@@ -156,6 +158,13 @@ function farmer_profile(props) {
                     </div>
                 </div>
             </div>
+            {loading &&
+
+                <div className="absolute top-0 w-screen h-screen bg-white flex items-center justify-center z-[10]">
+
+                    <span className="loading loading-ring loading-lg"></span>
+                </div>
+            }
         </div>
     );
 }
