@@ -127,8 +127,8 @@ function producer_profile(props) {
     <div>
       <Navbar />
       <div className='text-black mt-28'>
-        <h1>Producer Profile</h1>
-        <div className="w-1/2 mr-4">
+      <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi</h1>
+        <div className="w-1/2 m-10">
           <DetailsCard
             userType={'Producer'}
             farmerName={producerInfo.producerName}
