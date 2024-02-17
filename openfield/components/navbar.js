@@ -5,7 +5,7 @@ function Navbar(props) {
     return (
 
 
-        <div className="navbar bg-base-100 max-w-screen  fixed top-0 left-0 w-full z-10">
+        <div className="navbar bg-green-600 text-white max-w-screen  fixed top-0 left-0 w-full z-10">
             <div className="flex-1">
                 <Link href={"/openfield"} className="btn btn-ghost text-xl">OpenField</Link>
             </div>
