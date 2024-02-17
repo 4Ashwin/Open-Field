@@ -26,6 +26,6 @@ const sendMessage = (number, message) => {
 
 export const handleSell = (farmer, pesticide) => {
   const message = `INFO : ${farmer.name} bought ${pesticide.pesticideName} by ${pesticide.companyProduced}`;
-  sendMessage(farmer.phoneNumber, message);
+  sendMessage(9961220370, message);
   console.log(farmer.phoneNumber, message);
 };
