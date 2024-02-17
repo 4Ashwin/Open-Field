@@ -28,10 +28,10 @@ function Navbar(props) {
                             <ul className="p-2 bg-base-100 rounded-t-none text-black">
                                 {
                                     [
-                                        ["Farmer", "/openfield/farmer_profile"],
+                                        ["Farmer", "/openfield/farmer_profile/5"],
                                         ["Distributor", "/openfield/distributor_profile"],
                                         ["Regulatory board", "/openfield/regulatory_board_profile"],
-                                        ["Producer", "/openfield/producer_profile"]
+                                        ["Producer", "/openfield/producer_profile/1"]
                                     ].map((item, ind) => {
                                         return (
                                             <li>

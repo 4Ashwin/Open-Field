@@ -333,11 +333,19 @@ contract OpenField {
         emit NewFarmer(newFarmer);
     }
 
-    // function getFamerById(uint256 _id) external view returns (Farmer memory) {
-    //     require(_id <= farmerCount);
-    //     Farmer storage item = farmers[_id];
-    //     return item;
-    // }
+    function getFamerById(uint256 _id) external view returns (Farmer memory) {
+        require(_id <= farmerCount);
+        Farmer storage item = farmers[_id];
+        return item;
+    }
+
+    function getProducerById(
+        uint256 _id
+    ) external view returns (Producer memory) {
+        require(_id <= farmerCount);
+        Producer storage item = producers[_id];
+        return item;
+    }
 
     function getAllFarmers() external view returns (Farmer[] memory) {
         uint currentIndex = 0;
