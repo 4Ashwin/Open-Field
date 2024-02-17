@@ -58,20 +58,33 @@ export default function Home() {
 
                 </div>
                 <div className="w-[90rem] mx-1 rounded-lg shadow-md h-44 bg-yellow-400 flex flex-col  items-center ">
-                    <h1 className="text-2xl border-b-2 w-full text-center mb-8">Services</h1>
+                    <h1 className="text-2xl border-b-2 w-full text-center mb-8">Service Applications
+                    </h1>
                     {/* <hr className="bg-white" > */}
-                    <h2>Agmarket</h2>
-                    <h2>OpenField</h2>
-                    <h2>Soil Health Card</h2>
-                    <h2>Weather</h2>
+                    <h2>
+                        Service Applications
+                        Received(No)
+
+                        :	50,97,104</h2>
+                    <h2>Approved(No)
+
+                        :	46,32,718</h2>
+                    <h2>Rejected/Returned(No)
+
+                        :	4,10,279</h2>
+
                 </div>
                 <div className="w-[90rem] mx-1 rounded-lg shadow-md h-44 bg-orange-400 flex flex-col  items-center ">
-                    <h1 className="text-2xl border-b-2 w-full text-center ">Services</h1>
+                    <h1 className="text-2xl border-b-2 w-full text-center ">DBT</h1>
                     {/* <hr className="bg-white" > */}
-                    <h2>Agmarket</h2>
-                    <h2>OpenField</h2>
-                    <h2>Soil Health Card</h2>
-                    <h2>Weather</h2>
+                    <div className="flex flex-col justify-center h-full">
+                        <h2>No of beneficiaries
+
+                            :	4,24,737</h2>
+                        <h2>Benefit Transfered(Lakhs)
+
+                            :	24771.68</h2>
+                    </div>
                 </div>
 
             </div>

@@ -45,7 +45,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
       let contract = new ethers.Contract(ContractAddress, OpenField.abi, signer)
       let transaction = await contract.addPesticideFarmer(selected[0], selected[1], 10)
       await transaction.wait();
-      console.log("succ")
+      // console.log("succ")
       // print()
     }
   }
@@ -80,16 +80,19 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
 
           <p className="font bold">Select farmer</p>
           <input className="border w-full mb-5" placeholder="Search here" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <div className="z-[10] w-full h-64 overflow-scroll overflow-x-hidden">
+          <div className="z-[10] w-full h-64 overflow-scroll no-scrollbar overflow-x-hidden">
             {filtering.map((farmer, index) => {
               return (
                 <div
-                  className="rounded-lg shadow flex flex-col justify-center items-center mb-5"
+                  className="rounded-lg shadow flex flex-col  mb-5"
                   onClick={() => {
                     handleSelect(farmer, pesticide);
                   }}
                 >
-                  <h3>{farmer.name} : {farmer.id.toNumber()}</h3>
+                  <button className="flex flex-row  ">
+                    <h3 className="w-[30rem]">Farmer Id : {farmer.id.toNumber()} ___  Name: {farmer.name}   </h3>
+                    <button className="ml-44 bg-green-300 px-2 py-1 ">Select</button>
+                  </button>
                 </div>
               );
             })}

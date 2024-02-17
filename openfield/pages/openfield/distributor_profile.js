@@ -57,7 +57,7 @@ function distributor_profile(props) {
     <div>
       <Navbar />
       <div className="text-black mt-28">
-        <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi </h1>
+        <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {DistributorInfo.DistributorName}</h1>
         <div className="flex">
           <div className="w-1/2 mr-4">
             <DetailsCard
@@ -72,12 +72,12 @@ function distributor_profile(props) {
               <h2 className="text-lg font-semibold mb-2">
                 No of farmers as customers
               </h2>
-              <p className="text-red-700">147</p>
+              <p className="text-red-700">6</p>
             </div>
           </div>
         </div>
 
-        <table className="w-fullshadow-lg rounded-lg mt-4">
+        <table className="w-3/4 ml-10  shadow-md border-2 rounded-lg mt-4">
           <thead>
             <tr>
               <th className="p-3 text-left">Pesticide Id</th>
