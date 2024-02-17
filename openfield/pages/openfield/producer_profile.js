@@ -14,6 +14,13 @@ function producer_profile(props) {
   const router = useRouter()
   const [pesticidesData, setPesticidesData] = useState([])
 
+  const producerInfo = {
+    producerName: 'Producer ABC',
+    prodLocation: 'Farmville, USA',
+    Certification_Status: 'Valid until 23/04/2027',
+    id: "1"
+  };
+
   useEffect(() => {
     (async () => {
       if (currentAccount) {
@@ -22,7 +29,7 @@ function producer_profile(props) {
         // const provider = new ethers.providers.JsonRpcProvider()
         const Contract = new ethers.Contract(ContractAddress, OpenField.abi, provider)
 
-        const data = await Contract.getProcudersPesticides(1);
+        const data = await Contract.getProcudersPesticides(producerInfo.id);
         setPesticidesData(data)
 
         // setLogs(data);
@@ -113,11 +120,7 @@ function producer_profile(props) {
   //     },
   //   },
   // ];
-  const producerInfo = {
-    producerName: 'Producer ABC',
-    prodLocation: 'Farmville, USA',
-    Certification_Status: 'Valid until 23/04/2027',
-  };
+
 
 
   return (
