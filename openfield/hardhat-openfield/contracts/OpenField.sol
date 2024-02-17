@@ -64,6 +64,9 @@ contract OpenField {
         uint256 id;
         string name;
         string dealer_name;
+        string location;
+        string longitude;
+        string latitude;
     }
 
     constructor() {
@@ -74,12 +77,18 @@ contract OpenField {
         producer.id = 1;
         producer.name = "SOme PLT";
         producer.dealer_name = "Dealer nameeee";
+        producer.location = "delhi";
+        producer.longitude = "46%";
+        producer.latitude = "36%";
 
         producerCount += 1;
         Producer storage producer1 = producers[producerCount];
         producer1.id = 2;
         producer1.name = "PLT";
         producer1.dealer_name = " nameeee";
+        producer1.location = "delhi";
+        producer1.longitude = "50%";
+        producer1.latitude = "28%";
 
         addPesticide(
             1,

@@ -45,7 +45,7 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
       let contract = new ethers.Contract(ContractAddress, OpenField.abi, signer)
       let transaction = await contract.addPesticideFarmer(selected[0], selected[1], 10)
       await transaction.wait();
-      console("success")
+      console.log("success")
     }
   }
   return (
