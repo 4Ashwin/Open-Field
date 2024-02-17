@@ -159,7 +159,7 @@ function producer_profile(props) {
                 {/* <td className="py-2 px-4 border-b">{pesticide.distributer_info.status}</td>
                 <td className="py-2 px-4 border-b">{pesticide.distributer_info.company_name}</td> */}
               </tr>
-            ))}
+            ))} 
           </tbody>
         </table>
       </div>

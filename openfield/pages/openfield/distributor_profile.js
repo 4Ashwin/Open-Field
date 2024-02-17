@@ -27,7 +27,7 @@ function distributor_profile(props) {
             />
           </div>
           <div className="w-1/2">
-            <div className="bg-white p-4 rounded shadow">
+            <div className="bg-white p-4 rounded shadow m-7">
               <h2 className="text-lg font-semibold mb-2">
                 No of farmers as customers
               </h2>
