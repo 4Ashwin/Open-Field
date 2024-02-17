@@ -40,6 +40,7 @@ contract OpenField {
     struct PesticideFarmer {
         uint256 id;
         uint256 farmer_id;
+        uint256 qtd;
         uint256 pesticide_id;
     }
     struct Pesticide {
@@ -63,6 +64,9 @@ contract OpenField {
         uint256 id;
         string name;
         string dealer_name;
+        string location;
+        string longitude;
+        string latitude;
     }
 
     constructor() {
@@ -73,12 +77,18 @@ contract OpenField {
         producer.id = 1;
         producer.name = "SOme PLT";
         producer.dealer_name = "Dealer nameeee";
+        producer.location = "delhi";
+        producer.longitude = "46%";
+        producer.latitude = "36%";
 
         producerCount += 1;
         Producer storage producer1 = producers[producerCount];
         producer1.id = 2;
         producer1.name = "PLT";
         producer1.dealer_name = " nameeee";
+        producer1.location = "delhi";
+        producer1.longitude = "50%";
+        producer1.latitude = "28%";
 
         addPesticide(
             1,
@@ -159,6 +169,66 @@ contract OpenField {
         pesticide.expiry_date = _expiry_date;
 
         emit NewPesticide(pesticide);
+    }
+
+    function addPesticideFarmer(
+        uint256 _pest_id,
+        uint256 _farmer_id,
+        uint _qtd
+    ) public {
+        // require(bytes(_producer_id).length > 0);
+
+        pesticideFarmerCount++;
+        PesticideFarmer storage pesticide = pesticidesFarmer[
+            pesticideFarmerCount
+        ];
+        pesticide.id = pesticideCount;
+        pesticide.pesticide_id = _pest_id;
+        pesticide.farmer_id = _farmer_id;
+        pesticide.qtd = _qtd;
+
+        // emit NewPesticide(pesticide);
+    }
+
+    function getFarmersPesticidesById(
+        uint256 _id
+    ) external view returns (Pesticide[] memory) {
+        uint currentIndex = 0;
+        uint count = 0;
+        for (uint i = 0; i < pesticideCount; i++) {
+            uint currentId = i + 1;
+            PesticideFarmer storage currentItem = pesticidesFarmer[currentId];
+            if (currentItem.farmer_id == _id) {
+                count += 1;
+            }
+        }
+        Pesticide[] memory _pesticides = new Pesticide[](count);
+        for (uint i = 0; i < pesticideFarmerCount; i++) {
+            uint currentId = i + 1;
+            PesticideFarmer storage currentItem = pesticidesFarmer[currentId];
+            if (currentItem.farmer_id == _id) {
+                for (uint j = 0; j < pesticideCount; j++) {
+                    Pesticide storage pest = pesticides[j + 1];
+                    if (pest.id == currentItem.pesticide_id) {
+                        Pesticide memory p;
+                        p.id = pest.id;
+                        p.producer_id = pest.producer_id;
+                        p.name = pest.name;
+                        p.producer_name = pest.producer_name;
+                        p.quantity = currentItem.qtd;
+                        p.ingredient = pest.ingredient;
+                        p.batchno = pest.batchno;
+                        p.manufacture_date = pest.manufacture_date;
+                        p.expiry_date = pest.expiry_date;
+
+                        // pest.quantity = currentItem.qtd;
+                        _pesticides[currentIndex] = p;
+                        currentIndex += 1;
+                    }
+                }
+            }
+        }
+        return _pesticides;
     }
 
     function getProcudersPesticides(
