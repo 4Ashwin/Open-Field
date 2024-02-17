@@ -26,7 +26,8 @@
     "react-icons": "^5.0.1",
     "react-loader-spinner": "^6.1.6",
     "tls": "^0.0.1",
-    "twilio": "^4.22.0"
+    "twilio": "^4.22.0",
+    "web3modal": "1.9.10"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
