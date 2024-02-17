@@ -78,21 +78,22 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
       >
         <div>
 
-          <p className="font bold">Select farmer</p>
-          <input className="border w-full mb-5" placeholder="Search here" value={search} onChange={(e) => setSearch(e.target.value)} />
+          <p className="font-bold mb-2">Select farmer</p>
+          <input className="border w-full mb-5 px-2 py-1 rounded shadow" placeholder="Search here" value={search} onChange={(e) => setSearch(e.target.value)} />
           <div className="z-[10] w-full h-64 overflow-scroll no-scrollbar overflow-x-hidden">
             {filtering.map((farmer, index) => {
               return (
                 <div
-                  className="rounded-lg shadow flex flex-col  mb-5"
+                  className="rounded-lg shadow flex flex-row  mb-5 p-2 w-3/4"
                   onClick={() => {
                     handleSelect(farmer, pesticide);
                   }}
                 >
-                  <button className="flex flex-row  ">
-                    <h3 className="w-[30rem]">Farmer Id : {farmer.id.toNumber()} ___  Name: {farmer.name}   </h3>
-                    <button className="ml-44 bg-green-300 px-2 py-1 ">Select</button>
+                  <button className="flex flex-col  relative w-3/4">
+                    <h3 className="text-bold text-sm opacity-[0.5] absolute top-2 left-2">Id : {farmer.id.toNumber()}</h3>
+                    <h3 className="w-[30rem] font-bold">{farmer.name}   </h3>
                   </button>
+                  <button className="ml-44 bg-blue-500 px-2 py-1 rounded-lg font-bold text-sm px-4">Select</button>
                 </div>
               );
             })}
@@ -100,14 +101,17 @@ const FarmerModal = ({ isOpen, onClose, farmers, pesticide, children }) => {
         </div>
         {
           show &&
-          <input placeholder="Enter OTP" value={otp} onChange={e => setOtp(e.target.value)} />
+          <div className="w-full flex flex-col items-start">
+            <p className="my-2">An OTP is sent to the farmer's phone number.</p>
+            <input className="w-full mb-5 px-2 py-1 rounded shadow" placeholder="Enter OTP" value={otp} onChange={e => setOtp(e.target.value)} />
+          </div>
         }
         {
           show &&
-          <button onClick={() => handleSubmit()}>Confim</button>
+          <button className="with-fit rouned-lg bg-green-300 px-2 w-32 font-bold text-sm rounded py-2" onClick={() => handleSubmit()}>Confim</button>
         }
         <button
-          className="with-fit rouned-lg bg-red-100 px-2"
+          className="with-fit rouned-lg bg-red-300 px-2 w-32 font-bold text-sm rounded py-2"
           onClick={onClose}
         >
           CLOSE

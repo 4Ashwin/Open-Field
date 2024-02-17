@@ -58,21 +58,23 @@ function distributor_profile(props) {
       <Navbar />
       <div className="text-black mt-28">
         <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {DistributorInfo.DistributorName}</h1>
-        <div className="flex">
-          <div className="w-1/2 mr-4">
-            <DetailsCard
+        <h1 className="text-xl font-bold mt-4 ml-16 opacity-[0.5]">Location: Hyderabad, India</h1>
+        {/* <h1 className="text-xl font-bold mt-4 ml-16">Hi {DistributorInfo.DistributorName}</h1> */}
+        <div className="flex ml-16">
+          {/* <div className="w-1/2 ml-16"> */}
+          {/* <DetailsCard
               userType={"Distributor"}
-              farmerName={DistributorInfo.DistributorName}
+              farmerName={""}
               farmLocation={DistributorInfo.Outlet_loc}
               cropInfo={DistributorInfo.Instock}
-            />
-          </div>
-          <div className="w-1/2">
-            <div className="bg-white p-4 rounded shadow m-7">
-              <h2 className="text-lg font-semibold mb-2">
-                No of farmers as customers
+            /> */}
+          {/* </div> */}
+          <div className="w-full flex items-left my-6">
+            <div className="bg-white mt-4 font-bold rounded flex items-center">
+              <h2 className="text-lg">
+                No. of farmers as customers :
               </h2>
-              <p className="text-red-700">6</p>
+              <p className="text-red-700 ml-2"> 6</p>
             </div>
           </div>
         </div>
