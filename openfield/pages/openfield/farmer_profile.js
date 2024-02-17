@@ -42,6 +42,12 @@ function farmer_profile(props) {
                     <div className="w-1/2">
                         <SoilTestResultsCard soilTestResults />
                     </div>
+                    <div className="w-1/2">
+                        <div className="bg-white p-4 rounded shadow  dark:bg-neutral-700">
+                            <h2 className="text-lg font-semibold mb-2">Organic Certification</h2>
+                            <p className="text-red-700">Status: Not approved</p>
+                        </div>
+                    </div>
                 </div>
 
 

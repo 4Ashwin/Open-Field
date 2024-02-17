@@ -7,7 +7,7 @@ const SoilTestResultsCard = () => {
     labels: ['Nutrient A', 'Nutrient B', 'Nutrient C'],
     datasets: [
       {
-        data: [30, 40, 30],
+        data: [45, 20, 35],
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
         hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
       },
