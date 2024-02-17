@@ -92,7 +92,7 @@ contract OpenField {
 
         addPesticide(
             1,
-            100,
+            90,
             "Fertilizer name 1",
             "producer1",
             "ABCD",
@@ -101,26 +101,36 @@ contract OpenField {
             "7/03/2003"
         );
         addPesticide(
-            1,
-            100,
-            "Fertilizer name 1",
-            "producer1",
+            2,
+            30,
+            "Fertilizer name 2",
+            "producer2",
             "cd",
-            "B001",
-            "16/12/2002",
-            "7/03/2003"
-        );
-        addPesticide(
-            5,
-            100,
-            "Fertilizer name 1",
-            "producer1",
-            "ABCD",
-            "B001",
+            "B002",
             "16/12/2002",
             "7/03/2003"
         );
 
+        addPesticide(
+            3,
+            80,
+            "Fertilizer name 3",
+            "producer1",
+            "ABCD",
+            "B003",
+            "16/12/2002",
+            "7/03/2003"
+        );
+        addPesticide(
+            4,
+            120,
+            "Fertilizer name 4",
+            "producer2",
+            "ABCD",
+            "B004",
+            "16/12/2002",
+            "7/03/2003"
+        );
         // uint256 id;
         //         string name;
         //         string location;
@@ -128,6 +138,10 @@ contract OpenField {
         //         string latitude;
 
         addFarmer("Sreehari", "9999999999", "kannur", "45%", "20%");
+  addFarmer("Akash", "9999999999", "harikode", "45%", "20%");        
+    addFarmer("Alan", "9999999999", "etanthitta", "45%", "20%");
+      addFarmer("Heya", "9999999999", "kalapuzha", "45%", "20%");
+
         addFarmer("Ashwin", "9999999999", "kollam", "45%", "50%");
         addFarmer("Asher", "9999999999", "idk", "45%", "10%");
         addFarmer("Nooha", "9999999999", "Some", "45%", "30%");

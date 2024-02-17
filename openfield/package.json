@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
     "axios": "^1.6.7",
     "chart.js": "^4.4.1",
     "daisyui": "^4.7.2",
@@ -21,7 +24,8 @@
     "react-daisyui": "^5.0.0",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "tls": "^0.0.1"
+    "tls": "^0.0.1",
+    "web3modal": "^1.9.12"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
