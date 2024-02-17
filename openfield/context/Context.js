@@ -32,7 +32,8 @@ export const ContextProvider = ({ children }) => {
 
     if (currentAccount) {
 
-        const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
+        // const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
+        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:7545")
         const openField = new ethers.Contract(ContractAddress, OpenField.abi, provider)
         openField.on("NewFarmer", (o) => {
             console.log("new case", o)
