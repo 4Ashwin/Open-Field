@@ -30,7 +30,7 @@ function farmer_profile(props) {
         <div className='overflow-x-hidden'>
             <Navbar />
             <div className='text-black mt-28'>
-            <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {farmerInfo.farmerName}</h1>
+                <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {farmerInfo.farmerName}</h1>
 
                 <div className="flex">
                     <div className="w-1/2 mr-4">
@@ -82,7 +82,7 @@ function farmer_profile(props) {
                                 <th className='p-3 text-left'>Application Method</th>
                                 <th className='p-3 text-left'>Company Produced</th>
                                 <th className='p-3 text-left'>Targetted Pests</th>
-                            </tr>   
+                            </tr>
                         </thead>
                         <tbody>
                             {pesticidesData.map((fertilizer, index) => (
