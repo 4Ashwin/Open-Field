@@ -23,21 +23,21 @@ function producer_profile(props) {
 
   useEffect(() => {
     (async () => {
-      if (currentAccount) {
+      // if (currentAccount) {
 
-        const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
-        // const provider = new ethers.providers.JsonRpcProvider()
-        const Contract = new ethers.Contract(ContractAddress, OpenField.abi, provider)
+      const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
+      // const provider = new ethers.providers.JsonRpcProvider()
+      const Contract = new ethers.Contract(ContractAddress, OpenField.abi, provider)
 
-        const data = await Contract.getProcudersPesticides(producerInfo.id);
-        setPesticidesData(data)
+      const data = await Contract.getProcudersPesticides(producerInfo.id);
+      setPesticidesData(data)
 
-        // setLogs(data);
-        // setLoading(false)
-        console.log(data, "datas")
-      } else {
-        router.push("/");
-      }
+      // setLogs(data);
+      // setLoading(false)
+      console.log(data, "datas")
+      // } else {
+      //   router.push("/");
+      // }
     })()
   }, [currentAccount]);
 
@@ -127,7 +127,7 @@ function producer_profile(props) {
     <div>
       <Navbar />
       <div className='text-black mt-28'>
-      <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi</h1>
+        <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi</h1>
         <div className="w-1/2 m-10">
           <DetailsCard
             userType={'Producer'}
@@ -159,7 +159,7 @@ function producer_profile(props) {
                 {/* <td className="py-2 px-4 border-b">{pesticide.distributer_info.status}</td>
                 <td className="py-2 px-4 border-b">{pesticide.distributer_info.company_name}</td> */}
               </tr>
-            ))} 
+            ))}
           </tbody>
         </table>
       </div>
