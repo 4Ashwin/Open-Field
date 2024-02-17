@@ -77,7 +77,7 @@ function distributor_profile(props) {
           </div>
         </div>
 
-        <table className="w-3/4 ml-10  shadow-md border-2 rounded-lg mt-4">
+        <table className="w-3/4 ml-10  shadow-md border-2 rounded-lg mt-4 overflow-y-scroll">
           <thead>
             <tr>
               <th className="p-3 text-left">Pesticide Id</th>
