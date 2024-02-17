@@ -6,11 +6,11 @@ import { pesticidesData, farmers, DistributorInfo } from "../_data.js";
 import FarmerModal from "./components/FarmerModal";
 function distributor_profile(props) {
   let [modalVisible, setModalVisible] = useState(false);
-
-  const handleSellButtonClick = (pesticideId) => {
+  let [currentPesticide, setCurrentPesticide] = useState(null);
+  const handleSellButtonClick = (pesticide) => {
     // You can add logic here to handle the selling process and show a notification.
+    setCurrentPesticide(pesticide);
     setModalVisible(true);
-    console.log(`Product with ID ${pesticideId} sold.`);
   };
 
   return (
@@ -57,9 +57,7 @@ function distributor_profile(props) {
                 <td className="p-3">{fertilizer.targetedPests}</td>
                 <td className="py-2 px-4 border-b">
                   <button
-                    onClick={() =>
-                      handleSellButtonClick(fertilizer.pesticideId)
-                    }
+                    onClick={() => handleSellButtonClick(fertilizer)}
                     className="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
                   >
                     Sell
@@ -72,6 +70,7 @@ function distributor_profile(props) {
       </div>
       <FarmerModal
         isOpen={modalVisible}
+        pesticide={currentPesticide}
         onClose={() => {
           setModalVisible(false);
         }}

@@ -1,6 +1,7 @@
 import React from "react";
 import { farmers } from "../../_data";
-const FarmerModal = ({ isOpen, onClose, children }) => {
+import { handleSell } from "../utils";
+const FarmerModal = ({ isOpen, onClose, pesticide, children }) => {
   if (!isOpen) return null;
 
   return (
@@ -33,9 +34,13 @@ const FarmerModal = ({ isOpen, onClose, children }) => {
         <div>
           {farmers.map((farmer, index) => {
             return (
-              <div className="rounded-lg shadow flex flex-col justify-center items-center mb-5">
+              <div
+                className="rounded-lg shadow flex flex-col justify-center items-center mb-5"
+                onClick={() => {
+                  handleSell(farmer, pesticide);
+                }}
+              >
                 <h3>{farmer.name}</h3>
-                <button className="bg-blue-100 px-2">Sell</button>
               </div>
             );
           })}
