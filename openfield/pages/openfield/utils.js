@@ -12,7 +12,7 @@ const sendMessage = (number, message) => {
       {
         auth: {
           username: "AC259bfa4cc673a4212083a934e70fbfa4",
-          password: "9f96ea322cf458ca71d2dba01ab0750a",
+          password: "21f34cb3dc0a18805de3d77544033588",
         },
       }
     )
