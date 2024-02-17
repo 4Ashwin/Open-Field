@@ -147,7 +147,7 @@ function openfield(props) {
               return (
                 <Link
                   style={{ top: item.latitude, left: item.longitude }}
-                  href="/openfield/farmer_profile"
+                  href="/openfield/producer_profile"
                   className={`absolute`}
                 >
                   <div className="h-64 absolute group">
@@ -165,7 +165,7 @@ function openfield(props) {
             {/* <svg className="absolute" width="500" height="500"><line x1="50%" y1="50" x2="350" y2="350" stroke="black" /></svg> */}
           </div>
         </div>
-        <div>
+        {/* <div>
           <div className="flex flex-row">
             <div className="w-fit h-fit ">
               <SoilTestResultsCard />
@@ -188,7 +188,7 @@ function openfield(props) {
               Joint
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div >
   );

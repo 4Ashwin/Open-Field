@@ -18,23 +18,23 @@ function farmer_profile(props) {
 
     useEffect(() => {
         (async () => {
-            if (currentAccount) {
+            // if (currentAccount) {
 
-                const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
-                // const provider = new ethers.providers.JsonRpcProvider()
-                const Contract = new ethers.Contract(ContractAddress, OpenField.abi, provider)
+            const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.g.alchemy.com/v2/A0WsVMwzZrhZNtpslk8RDsbxZvHGvyfL")
+            // const provider = new ethers.providers.JsonRpcProvider()
+            const Contract = new ethers.Contract(ContractAddress, OpenField.abi, provider)
 
-                const data_pest = await Contract.getFarmersPesticidesById(1);
+            const data_pest = await Contract.getFarmersPesticidesById(1);
 
-                setPesticidesData(data_pest)
+            setPesticidesData(data_pest)
 
 
-                // setLogs(data);
-                // setLoading(false)
-                console.log(data_pest, "datas")
-            } else {
-                router.push("/");
-            }
+            // setLogs(data);
+            // setLoading(false)
+            console.log(data_pest, "datas")
+            // } else {
+            //     router.push("/");
+            // }
         })()
     }, [currentAccount]);
 
@@ -52,7 +52,7 @@ function farmer_profile(props) {
     // ];
     const farmerInfo = {
         farmerName: 'Ashwin Binu',
-        farmLocation: 'Farmville, USA',
+        farmLocation: 'Kollam, Kerala',
         cropInformation: 'Corn',
         cropRotationHistory: '',
         harvestRecords: 'No records available',
@@ -63,31 +63,76 @@ function farmer_profile(props) {
     return (
         <div className='overflow-x-hidden'>
             <Navbar />
-            <div className='text-black mt-28'>
-                <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {farmerInfo.farmerName}</h1>
+            <div className='text-black mt-28 flex flex-row w-screen'>
+                {/* <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {farmerInfo.farmerName}</h1> */}
+                <div className='w-3/4'>
+                    <h5 className="mb-1 text-lg font-medium leading-tight text-black px-10 opacity-[0.5]">
+                        Farmer Details
+                    </h5>
+                    <div className="flex justify-between w-full px-10">
+                        <div className="w-1/2 min-h-64">
+                            <DetailsCard
+                                userType={'Farmer'}
+                                farmerName={farmerInfo.farmerName}
+                                farmLocation={farmerInfo.farmLocation}
+                                cropInfo={farmerInfo.cropInformation}
+                            />
+                        </div>
+                        <div className='w-1/2 flex pr-5 justify-between'>
 
-                <div className="flex">
-                    <div className="w-1/2 mr-4">
-                        <DetailsCard
-                            userType={'Farmer'}
-                            farmerName={farmerInfo.farmerName}
-                            farmLocation={farmerInfo.farmLocation}
-                            cropInfo={farmerInfo.cropInformation}
-                        />
+                            <div className="w-1/2">
+                                <SoilTestResultsCard soilTestResults />
+                            </div>
+                            <div className="w-1/2 ml-3">
+                                <SoilTestResultsCard soilTestResults />
+                            </div>
+                        </div>
+
                     </div>
-                    <div className="w-1/2">
+
+                    <div className='w-full flex flex-row justify-between  px-10 items-between'>
+                        <table className='w-full border-2 overflow-x-hidden rounded  shadow-lg rounded-lg mt-4'>
+                            <thead>
+                                <tr >
+                                    <th className='p-3 text-center text-left'>Pesticide Id</th>
+                                    <th className='p-3 text-center text-left'>Batch No</th>
+                                    <th className='p-3 text-center text-left'>Pesticide Name</th>
+                                    <th className='p-3 text-center text-left'>ingredients</th>
+                                    <th className='p-3 text-center text-left'>Quantity</th>
+                                    <th className='p-3 text-center text-left'>Application Method</th>
+                                    <th className='p-3 text-center text-left'>Company Produced</th>
+                                    <th className='p-3 text-center text-left'>Targetted Pests</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {pesticidesData.map((fertilizer, index) => (
+                                    <tr key={index}>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.id.toNumber()}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.batchno}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.name}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.ingredient}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.quantity.toNumber()}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.manufacture_date}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.expiry_date}</td>
+                                    </tr>
+                                ))}
+                                {pesticidesData.length == 0 && <p className='w-full text-center py-5'>No records</p>}
+                            </tbody>
+                        </table>
+                        {/* <div className="w-1/2 mt-5 mr-20 ml-20">
                         <SoilTestResultsCard soilTestResults />
+                    </div> */}
                     </div>
-                    <div className="w-1/2">
-                        <SoilTestResultsCard soilTestResults />
-                    </div>
-                    <div className="w-1/2">
-                        <div className="bg-white p-4 rounded border-2 shadow mr-20">
+                </div>
+                <div className='w-1/4 pr-10'>
+                    <div className="w-full h-[85vh]">
+                        <div className="bg-white p-4 rounded border-2 shadow">
                             <h2 className="text-lg font-semibold mb-2">Organic Certification</h2>
                             <p className="text-red-700">Status: Not approved</p>
                         </div>
-                        <div className='bg-white border-2 h-[14rem] mr-20 flex flex-col items-center shadow'>
-                            <h1 className='text-center text-lg font-semibold border-b-2'>Notifications</h1>
+                        <div className='bg-white border-2 h-3/4 flex flex-col items-center shadow'>
+
+                            <h1 className='text-center text-lg font-semibold border-b-2 mt-3'>Notifications</h1>
                             <div className='overflow-y-auto no-scrollbar scroll-auto animate-pulse '>
                                 <h1>New Stocks Available</h1>
                                 <h1>Price drop for RTX234</h1>
@@ -101,39 +146,6 @@ function farmer_profile(props) {
                                 <h1>Audit report alert!!</h1>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div className='w-full flex flex-row justify-between   items-between'>
-                    <table className='w-2/3 border-2 overflow-x-hidden ml-10  shadow-lg rounded-lg mt-4'>
-                        <thead>
-                            <tr >
-                                <th className='p-3 text-left'>Pesticide Id</th>
-                                <th className='p-3 text-left'>Batch No</th>
-                                <th className='p-3 text-left'>Pesticide Name</th>
-                                <th className='p-3 text-left'>ingredients</th>
-                                <th className='p-3 text-left'>Quantity</th>
-                                <th className='p-3 text-left'>Application Method</th>
-                                <th className='p-3 text-left'>Company Produced</th>
-                                <th className='p-3 text-left'>Targetted Pests</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {pesticidesData.map((fertilizer, index) => (
-                                <tr key={index}>
-                                    <td className="py-2 px-4 border-b">{fertilizer.id.toNumber()}</td>
-                                    <td className="py-2 px-4 border-b">{fertilizer.batchno}</td>
-                                    <td className="py-2 px-4 border-b">{fertilizer.name}</td>
-                                    <td className="py-2 px-4 border-b">{fertilizer.ingredient}</td>
-                                    <td className="py-2 px-4 border-b">{fertilizer.quantity.toNumber()}</td>
-                                    <td className="py-2 px-4 border-b">{fertilizer.manufacture_date}</td>
-                                    <td className="py-2 px-4 border-b">{fertilizer.expiry_date}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className="w-1/2 mt-5 mr-20 ml-20">
-                        <SoilTestResultsCard soilTestResults />
                     </div>
                 </div>
             </div>
