@@ -94,26 +94,26 @@ function farmer_profile(props) {
                         <table className='w-full border-2 overflow-x-hidden rounded  shadow-lg rounded-lg mt-4'>
                             <thead>
                                 <tr >
-                                    <th className='p-3 text-left'>Pesticide Id</th>
-                                    <th className='p-3 text-left'>Batch No</th>
-                                    <th className='p-3 text-left'>Pesticide Name</th>
-                                    <th className='p-3 text-left'>ingredients</th>
-                                    <th className='p-3 text-left'>Quantity</th>
-                                    <th className='p-3 text-left'>Application Method</th>
-                                    <th className='p-3 text-left'>Company Produced</th>
-                                    <th className='p-3 text-left'>Targetted Pests</th>
+                                    <th className='p-3 text-center text-left'>Pesticide Id</th>
+                                    <th className='p-3 text-center text-left'>Batch No</th>
+                                    <th className='p-3 text-center text-left'>Pesticide Name</th>
+                                    <th className='p-3 text-center text-left'>ingredients</th>
+                                    <th className='p-3 text-center text-left'>Quantity</th>
+                                    <th className='p-3 text-center text-left'>Application Method</th>
+                                    <th className='p-3 text-center text-left'>Company Produced</th>
+                                    <th className='p-3 text-center text-left'>Targetted Pests</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {pesticidesData.map((fertilizer, index) => (
                                     <tr key={index}>
-                                        <td className="py-2 px-4 border-b">{fertilizer.id.toNumber()}</td>
-                                        <td className="py-2 px-4 border-b">{fertilizer.batchno}</td>
-                                        <td className="py-2 px-4 border-b">{fertilizer.name}</td>
-                                        <td className="py-2 px-4 border-b">{fertilizer.ingredient}</td>
-                                        <td className="py-2 px-4 border-b">{fertilizer.quantity.toNumber()}</td>
-                                        <td className="py-2 px-4 border-b">{fertilizer.manufacture_date}</td>
-                                        <td className="py-2 px-4 border-b">{fertilizer.expiry_date}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.id.toNumber()}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.batchno}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.name}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.ingredient}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.quantity.toNumber()}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.manufacture_date}</td>
+                                        <td className="py-2 px-4 text-center border-b">{fertilizer.expiry_date}</td>
                                     </tr>
                                 ))}
                                 {pesticidesData.length == 0 && <p className='w-full text-center py-5'>No records</p>}

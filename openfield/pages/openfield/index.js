@@ -147,7 +147,7 @@ function openfield(props) {
               return (
                 <Link
                   style={{ top: item.latitude, left: item.longitude }}
-                  href="/openfield/farmer_profile"
+                  href="/openfield/producer_profile"
                   className={`absolute`}
                 >
                   <div className="h-64 absolute group">
