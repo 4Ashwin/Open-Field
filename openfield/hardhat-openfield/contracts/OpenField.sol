@@ -23,6 +23,7 @@ contract OpenField {
         string location;
         string longitude;
         string latitude;
+        string mobile;
     }
     struct Distributor {
         uint256 id;
@@ -44,6 +45,7 @@ contract OpenField {
     struct Pesticide {
         uint256 id;
         uint256 producer_id;
+        string producer_name;
         string name;
         uint256 quantity;
         string ingredient;
@@ -78,9 +80,47 @@ contract OpenField {
         producer1.name = "PLT";
         producer1.dealer_name = " nameeee";
 
-        addPesticide(1, 100, "ABCD", "B001", "16/12/2002", "7/03/2003");
-        addPesticide(1, 100, "cd", "B001", "16/12/2002", "7/03/2003");
-        addPesticide(5, 100, "ABCD", "B001", "16/12/2002", "7/03/2003");
+        addPesticide(
+            1,
+            100,
+            "Fertilizer name 1",
+            "producer1",
+            "ABCD",
+            "B001",
+            "16/12/2002",
+            "7/03/2003"
+        );
+        addPesticide(
+            1,
+            100,
+            "Fertilizer name 1",
+            "producer1",
+            "cd",
+            "B001",
+            "16/12/2002",
+            "7/03/2003"
+        );
+        addPesticide(
+            5,
+            100,
+            "Fertilizer name 1",
+            "producer1",
+            "ABCD",
+            "B001",
+            "16/12/2002",
+            "7/03/2003"
+        );
+
+        // uint256 id;
+        //         string name;
+        //         string location;
+        //         string longitude;
+        //         string latitude;
+
+        addFarmer("Sreehari", "9999999999", "kannur", "45%", "20%");
+        addFarmer("Ashwin", "9999999999", "kollam", "45%", "50%");
+        addFarmer("Asher", "9999999999", "idk", "45%", "10%");
+        addFarmer("Nooha", "9999999999", "Some", "45%", "30%");
     }
 
     event NewFarmer(Farmer);
@@ -89,13 +129,16 @@ contract OpenField {
     function addPesticide(
         uint256 _producer_id,
         uint256 _quantity,
+        string memory _name,
+        string memory _producer_name,
         string memory _ingredient,
         string memory _batchno,
         string memory _manufacture_date,
         string memory _expiry_date
     ) public {
         // require(bytes(_producer_id).length > 0);
-        // require(bytes(_quantity).length > 0);
+        require(bytes(_name).length > 0);
+        require(bytes(_producer_name).length > 0);
         require(bytes(_ingredient).length > 0);
         require(bytes(_batchno).length > 0);
         require(bytes(_manufacture_date).length > 0);
@@ -107,6 +150,8 @@ contract OpenField {
 
         pesticide.id = pesticideCount;
         pesticide.producer_id = _producer_id;
+        pesticide.name = _name;
+        pesticide.producer_name = _producer_name;
         pesticide.quantity = _quantity;
         pesticide.ingredient = _ingredient;
         pesticide.batchno = _batchno;
@@ -140,36 +185,57 @@ contract OpenField {
         return _pesticides;
     }
 
-    // function addFarmer(
-    //     string memory _cid,
-    //     string memory _filename,
-    //     string memory _location,
-    //     string memory _longitude,
-    //     string memory _latitude,
-    //     string memory _time,
-    //     string memory _date,
-    //     string memory _category
-    // ) public {
-    //     require(bytes(_cid).length > 0);
-    //     require(bytes(_filename).length > 0);
-    //     require(bytes(_location).length > 0);
-    //     require(bytes(_longitude).length > 0);
-    //     require(bytes(_latitude).length > 0);
-    //     require(bytes(_time).length > 0);
-    //     require(bytes(_date).length > 0);
-    //     require(bytes(_category).length > 0);
+    function getPesticides() external view returns (Pesticide[] memory) {
+        uint currentIndex = 0;
+        Pesticide[] memory _pesticides = new Pesticide[](pesticideCount);
+        for (uint i = 0; i < pesticideCount; i++) {
+            uint currentId = i + 1;
+            Pesticide storage currentItem = pesticides[currentId];
 
-    //     farmerCount++;
+            _pesticides[currentIndex] = currentItem;
+            currentIndex += 1;
+        }
+        return _pesticides;
+    }
 
-    //     Farmer storage newFarmer = farmers[farmerCount];
+    function getProducers() external view returns (Producer[] memory) {
+        uint currentIndex = 0;
+        Producer[] memory _producers = new Producer[](producerCount);
+        for (uint i = 0; i < producerCount; i++) {
+            uint currentId = i + 1;
+            Producer storage currentItem = producers[currentId];
+            _producers[currentIndex] = currentItem;
+            currentIndex += 1;
+        }
+        return _producers;
+    }
 
-    //     newFarmer.id = farmerCount;
-    //     newFarmer.location = _location;
-    //     newFarmer.longitude = _longitude;
-    //     newFarmer.latitude = _latitude;
+    function addFarmer(
+        string memory _name,
+        string memory _mob,
+        string memory _location,
+        string memory _longitude,
+        string memory _latitude
+    ) public {
+        require(bytes(_name).length > 0);
+        require(bytes(_mob).length > 0);
+        require(bytes(_location).length > 0);
+        require(bytes(_longitude).length > 0);
+        require(bytes(_latitude).length > 0);
 
-    //     emit NewFarmer(newFarmer);
-    // }
+        farmerCount++;
+
+        Farmer storage newFarmer = farmers[farmerCount];
+
+        newFarmer.id = farmerCount;
+        newFarmer.name = _name;
+        newFarmer.mobile = _mob;
+        newFarmer.location = _location;
+        newFarmer.longitude = _longitude;
+        newFarmer.latitude = _latitude;
+
+        emit NewFarmer(newFarmer);
+    }
 
     // function getFamerById(uint256 _id) external view returns (Farmer memory) {
     //     require(_id <= farmerCount);
@@ -177,15 +243,15 @@ contract OpenField {
     //     return item;
     // }
 
-    // function getAllFarmers() external view returns (Farmer[] memory) {
-    //     uint currentIndex = 0;
-    //     Farmer[] memory _farmers = new Farmer[](farmerCount);
-    //     for (uint i = 0; i < farmerCount; i++) {
-    //         uint currentId = i + 1;
-    //         Farmer storage currentItem = farmers[currentId];
-    //         _farmers[currentIndex] = currentItem;
-    //         currentIndex += 1;
-    //     }
-    //     return _farmers;
-    // }
+    function getAllFarmers() external view returns (Farmer[] memory) {
+        uint currentIndex = 0;
+        Farmer[] memory _farmers = new Farmer[](farmerCount);
+        for (uint i = 0; i < farmerCount; i++) {
+            uint currentId = i + 1;
+            Farmer storage currentItem = farmers[currentId];
+            _farmers[currentIndex] = currentItem;
+            currentIndex += 1;
+        }
+        return _farmers;
+    }
 }

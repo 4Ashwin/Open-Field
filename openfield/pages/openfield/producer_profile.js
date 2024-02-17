@@ -127,8 +127,8 @@ function producer_profile(props) {
     <div>
       <Navbar />
       <div className='text-black mt-28'>
-        <h1>Producer Profile</h1>
-        <div className="w-1/2 mr-4">
+      <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi</h1>
+        <div className="w-1/2 m-10">
           <DetailsCard
             userType={'Producer'}
             farmerName={producerInfo.producerName}
@@ -151,7 +151,7 @@ function producer_profile(props) {
           <tbody>
             {pesticidesData.map((pesticide, ind) => (
               <tr key={ind}>
-                <td className="py-2 px-4 border-b">{ethers.utils.formatEther(pesticide.id)}</td>
+                <td className="py-2 px-4 border-b">{pesticide.id.toNumber()}</td>
                 <td className="py-2 px-4 border-b">{pesticide.batchno}</td>
                 <td className="py-2 px-4 border-b">{pesticide.ingredient}</td>
                 <td className="py-2 px-4 border-b">{pesticide.manufacture_date}</td>
@@ -159,7 +159,7 @@ function producer_profile(props) {
                 {/* <td className="py-2 px-4 border-b">{pesticide.distributer_info.status}</td>
                 <td className="py-2 px-4 border-b">{pesticide.distributer_info.company_name}</td> */}
               </tr>
-            ))}
+            ))} 
           </tbody>
         </table>
       </div>

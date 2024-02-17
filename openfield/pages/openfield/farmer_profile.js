@@ -17,7 +17,7 @@ function farmer_profile(props) {
         { pesticideId: 10, batchNo: 'BCD890', pesticideName: 'Pesticide J', ingredients: 'Ingredient U', quantity: 35, applicationMethod: 'Injection', companyProduced: 'Company U', targetedPests: 'Pests J' },
     ];
     const farmerInfo = {
-        farmerName: 'John Doe',
+        farmerName: 'Ashwin Binu',
         farmLocation: 'Farmville, USA',
         cropInformation: 'Corn',
         cropRotationHistory: '',
@@ -30,7 +30,8 @@ function farmer_profile(props) {
         <div className='overflow-x-hidden'>
             <Navbar />
             <div className='text-black mt-28'>
-                <h1>Farmer Profile</h1>
+            <h1 className="text-3xl font-bold text-blue-500 mt-4 ml-16">Hi {farmerInfo.farmerName}</h1>
+
                 <div className="flex">
                     <div className="w-1/2 mr-4">
                         <DetailsCard
@@ -47,11 +48,11 @@ function farmer_profile(props) {
                         <SoilTestResultsCard soilTestResults />
                     </div>
                     <div className="w-1/2">
-                        <div className="bg-white p-4 rounded border-2 shadow">
+                        <div className="bg-white p-4 rounded border-2 shadow mr-20">
                             <h2 className="text-lg font-semibold mb-2">Organic Certification</h2>
                             <p className="text-red-700">Status: Not approved</p>
                         </div>
-                        <div className='bg-white border-2 h-[14rem] mt-3  flex flex-col items-center shadow'>
+                        <div className='bg-white border-2 h-[14rem] mr-20 flex flex-col items-center shadow'>
                             <h1 className='text-center text-lg font-semibold border-b-2'>Notifications</h1>
                             <div className='overflow-y-auto no-scrollbar scroll-auto animate-pulse '>
                                 <h1>New Stocks Available</h1>
@@ -81,7 +82,7 @@ function farmer_profile(props) {
                                 <th className='p-3 text-left'>Application Method</th>
                                 <th className='p-3 text-left'>Company Produced</th>
                                 <th className='p-3 text-left'>Targetted Pests</th>
-                            </tr>
+                            </tr>   
                         </thead>
                         <tbody>
                             {pesticidesData.map((fertilizer, index) => (
@@ -99,7 +100,7 @@ function farmer_profile(props) {
                             ))}
                         </tbody>
                     </table>
-                    <div className="w-fit mt-5 mr-20 ">
+                    <div className="w-1/2 mt-5 mr-20 ml-20">
                         <SoilTestResultsCard soilTestResults />
                     </div>
                 </div>
