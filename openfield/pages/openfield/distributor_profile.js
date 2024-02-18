@@ -9,7 +9,7 @@ import OpenField from "../../hardhat-openfield/artifacts/contracts/OpenField.sol
 import { useRouter } from "next/navigation";
 import { ethers } from "ethers";
 import { Context } from "@/context/Context";
-
+import "@ethersproject/shims"
 
 
 function distributor_profile(props) {
