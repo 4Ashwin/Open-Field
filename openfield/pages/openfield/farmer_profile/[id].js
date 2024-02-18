@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar';
 import React, { useContext, useEffect, useState } from 'react';
 import DetailsCard from '../components/DetailsCard';
 import SoilTestResultsCard from '../components/SoilTestResultsCard';
+import SoilTestResultsCard2 from '../components/SoilTestResultsCard2';
 import { Context } from '@/context/Context';
 import { useRouter } from 'next/router';
 import { ethers } from "ethers";
@@ -93,7 +94,7 @@ function farmer_profile(props) {
                                 <SoilTestResultsCard soilTestResults />
                             </div>
                             <div className="w-1/2 ml-3">
-                                <SoilTestResultsCard soilTestResults />
+                                <SoilTestResultsCard2 soilTestResults />
                             </div>
                         </div>
 
