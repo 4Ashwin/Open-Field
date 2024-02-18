@@ -109,9 +109,9 @@ function farmer_profile(props) {
                                     <th className='p-3 text-center text-left'>Pesticide Name</th>
                                     <th className='p-3 text-center text-left'>ingredients</th>
                                     <th className='p-3 text-center text-left'>Quantity</th>
-                                    <th className='p-3 text-center text-left'>Application Method</th>
-                                    <th className='p-3 text-center text-left'>Company Produced</th>
-                                    <th className='p-3 text-center text-left'>Targetted Pests</th>
+                                    <th className='p-3 text-center text-left'>Manufactured date</th>
+                                    <th className='p-3 text-center text-left'>Expiry date</th>
+                                    {/* <th className='p-3 text-center text-left'>Targetted Pests</th> */}
                                 </tr>
                             </thead>
                             <tbody>

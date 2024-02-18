@@ -19,7 +19,7 @@ function Navbar(props) {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
-                    {/* <li><a>Link</a></li> */}
+                    <li><Link href={"/openfield/crops"}>Crops</Link></li>
                     <li>
                         <details>
                             <summary>
