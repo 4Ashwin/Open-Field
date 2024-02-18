@@ -34,7 +34,7 @@ function Navbar(props) {
                                         ["Producer", "/openfield/producer_profile/1"]
                                     ].map((item, ind) => {
                                         return (
-                                            <li>
+                                            <li key={ind}>
 
                                                 <button key={ind} onClick={() => handleLogin(item)}>{item[0]}</button>
                                             </li>

@@ -6,6 +6,8 @@ import SoilTestResultsCard from "./components/SoilTestResultsCard";
 import { ContractAddress } from "@/config";
 import OpenField from "../../hardhat-openfield/artifacts/contracts/OpenField.sol/OpenField.json"
 import { ethers } from "ethers"
+import "@ethersproject/shims"
+
 // import { Map } from '@esri/react-arcgis';
 // import CustomMap from "@/components/CustomMap";
 // import { Spinner } from "@material-tailwind/react";

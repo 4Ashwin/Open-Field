@@ -6,6 +6,7 @@ import { ContractAddress } from "../../../config";
 import OpenField from "../../../hardhat-openfield/artifacts/contracts/OpenField.sol/OpenField.json"
 import { useRouter } from 'next/router';
 import { ethers } from "ethers";
+import "@ethersproject/shims"
 
 
 function producer_profile(props) {
